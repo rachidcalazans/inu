@@ -7,13 +7,13 @@ import java.util.List;
  * Created by rachidcalazans on 10/8/16.
  */
 public class Player {
-    public List cards = new ArrayList<>();
+    public List<Card> cards = new ArrayList<Card>();
 
-    public List getCards() {
+    public List<Card> getCards() {
         return cards;
     }
 
-    public void setCards(List cardsForHand) {
+    public void setCards(List<Card> cardsForHand) {
       this.cards = cardsForHand;
     }
 }

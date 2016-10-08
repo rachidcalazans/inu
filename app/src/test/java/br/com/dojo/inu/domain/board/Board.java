@@ -15,8 +15,8 @@ public class Board {
 
     int INITIAL_CARD_NUMBER = 7;
 
-    public List shuffleCards(List unShuffleCards) {
-        List cards = sortCards(unShuffleCards);
+    public List<Card> shuffleCards(List<Card> unShuffleCards) {
+        List<Card> cards = sortCards(unShuffleCards);
 
 //        if (cards.equals(unShuffleCards))
 //            shuffleCards(cards);
@@ -24,9 +24,9 @@ public class Board {
         return cards;
     }
 
-    private List sortCards(List unShuffleCards) {
+    private List<Card> sortCards(List<Card> unShuffleCards) {
         long seed         = System.nanoTime();
-        List shuffleCards = new ArrayList<>();
+        List<Card> shuffleCards = new ArrayList<Card>();
 
         shuffleCards.addAll(unShuffleCards);
         Collections.copy(shuffleCards, unShuffleCards);
@@ -40,7 +40,7 @@ public class Board {
 
 
         for(Player player : players) {
-            List cardsForHand = getPlayerHand(cards);
+            List<Card> cardsForHand = getPlayerHand(cards);
             player.setCards(cardsForHand);
         }
 
@@ -49,7 +49,7 @@ public class Board {
 
     private List<Card> getPlayerHand(List<Card> cards) {
 
-        List<Card> playerHand = cards.subList(0, INITIAL_CARD_NUMBER);
+        List<Card> playerHand = new ArrayList<Card>( cards.subList(0, INITIAL_CARD_NUMBER));
 //        for(String card : playerHand) {
 //            cards.remove(card);
 //        }

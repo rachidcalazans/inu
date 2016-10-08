@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import br.com.dojo.inu.domain.Card;
 import br.com.dojo.inu.domain.Player;
 
 /**
@@ -30,8 +31,8 @@ public class BoardTest {
     }
 
     public static abstract class Describe_shuffle_cards extends Given_a_Board {
-        List resultCards;
-        List unShuffleCards;
+        List<Card> resultCards;
+        List<Card> unShuffleCards;
 
         @Before
         public void before() {
@@ -47,7 +48,7 @@ public class BoardTest {
     public static class When_receive_a_list_of_cards extends Describe_shuffle_cards {
         @Override
         void setUnshuffleCards() {
-            unShuffleCards = new ArrayList<>(Arrays.asList("Card1","Card2","Card3")) ;
+            unShuffleCards = new ArrayList<Card>(Arrays.asList(new Card("Card1"), new Card("Card2"))) ;
         }
 
         @Test
@@ -75,12 +76,14 @@ public class BoardTest {
 
         private int expectedNumberOfHandCards = 7;
         private int expectedFinalNumberOfCards = 40;
-        private List<String> cards = new ArrayList<String>();
+        private List<Card> cards = new ArrayList<Card>();
 
         @Before
         public void deliver_initial_cards(){
             for(int i = 1; i <= 54; ++i) {
-                cards.add("card" +i);
+                String identifier = "card" +i;
+                Card card = new Card( identifier );
+                cards.add(card);
             }
 
             board.deliverInitialCards(players, cards);

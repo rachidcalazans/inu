@@ -7,6 +7,10 @@ public class Card {
 
     private String identifier;
 
+    public Card(String identifier) {
+        this.identifier = identifier;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
