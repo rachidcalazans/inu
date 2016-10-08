@@ -58,13 +58,30 @@ public class BoardTest {
         }
     }
 
-    public abstract static class Given_two_players {
+    public abstract static class Given_two_players extends Given_a_Board {
+
+        List<Player> players = new ArrayList<Player>();
+
+        @Before
+        public void givenTwoPlayers(){
+            Player playerOne = new Player();
+            Player playerTwo = new Player();
+
+            players.add(playerOne);
+            players.add(playerTwo);
+
+        }
     }
 
-    public static class Describe_deliverInitialCards {
+    public static class Describe_deliverInitialCards extends Given_two_players {
 
         private int expectedNumberOfCards = 7;
-        private List<Player> players = new ArrayList<>(2);
+        private List cards;
+
+        @Before
+        public void deliver_initial_cards(){
+            board.deliverInitialCards(players, cards);
+        }
 
         @Test
         public void It_player_should_has_seven_cards() {

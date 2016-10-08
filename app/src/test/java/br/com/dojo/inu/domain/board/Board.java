@@ -5,10 +5,14 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
+import br.com.dojo.inu.domain.Player;
+
 /**
  * Created by rachidcalazans on 10/8/16.
  */
 public class Board {
+
+    int INITIAL_CARD_NUMBER = 7;
 
     public List shuffleCards(List unShuffleCards) {
         List cards = sortCards(unShuffleCards);
@@ -31,4 +35,7 @@ public class Board {
         return shuffleCards;
     }
 
+    public void deliverInitialCards(List<Player> players, List cards) {
+
+    }
 }
