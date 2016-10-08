@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
+import br.com.dojo.inu.domain.Card;
 import br.com.dojo.inu.domain.Player;
 
 /**
@@ -35,7 +36,7 @@ public class Board {
         return shuffleCards;
     }
 
-    public void deliverInitialCards(List<Player> players, List cards) {
+    public void deliverInitialCards(List<Player> players, List<Card> cards) {
 
 
         for(Player player : players) {
@@ -46,10 +47,13 @@ public class Board {
 
     }
 
-    private List getPlayerHand(List cards) {
+    private List<Card> getPlayerHand(List<Card> cards) {
 
-        List playerHand = cards.subList(0, INITIAL_CARD_NUMBER-1);
-
+        List<Card> playerHand = cards.subList(0, INITIAL_CARD_NUMBER);
+//        for(String card : playerHand) {
+//            cards.remove(card);
+//        }
+        cards.removeAll(playerHand);
         return playerHand;
     }
 }

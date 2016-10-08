@@ -6,9 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.experimental.runners.Enclosed;
 import org.junit.runner.RunWith;
-import org.mockito.Mock;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -75,11 +73,16 @@ public class BoardTest {
 
     public static class Describe_deliverInitialCards extends Given_two_players {
 
-        private int expectedNumberOfCards = 7;
-        private List cards = new ArrayList<>(54);
+        private int expectedNumberOfHandCards = 7;
+        private int expectedFinalNumberOfCards = 40;
+        private List<String> cards = new ArrayList<String>();
 
         @Before
         public void deliver_initial_cards(){
+            for(int i = 1; i <= 54; ++i) {
+                cards.add("card" +i);
+            }
+
             board.deliverInitialCards(players, cards);
         }
 
@@ -87,7 +90,12 @@ public class BoardTest {
         public void It_player_should_has_seven_cards() {
             Player playerOne = players.get(0);
             int resultNumberOfCards = Integer.valueOf(playerOne.getCards().size());
-            Assert.assertEquals(expectedNumberOfCards, resultNumberOfCards);
+            Assert.assertEquals(expectedNumberOfHandCards, resultNumberOfCards);
+        }
+
+        @Test
+        public void It_number_of_cards_sould_be_reduced_based_on_the_number_of_players() {
+            Assert.assertEquals(expectedFinalNumberOfCards, cards.size());
         }
     }
 
