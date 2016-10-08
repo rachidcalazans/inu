@@ -37,5 +37,19 @@ public class Board {
 
     public void deliverInitialCards(List<Player> players, List cards) {
 
+
+        for(Player player : players) {
+            List cardsForHand = getPlayerHand(cards);
+            player.setCards(cardsForHand);
+        }
+
+
+    }
+
+    private List getPlayerHand(List cards) {
+
+        List playerHand = cards.subList(0, INITIAL_CARD_NUMBER-1);
+
+        return playerHand;
     }
 }

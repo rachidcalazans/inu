@@ -12,4 +12,8 @@ public class Player {
     public List getCards() {
         return cards;
     }
+
+    public void setCards(List cardsForHand) {
+      this.cards = cardsForHand;
+    }
 }

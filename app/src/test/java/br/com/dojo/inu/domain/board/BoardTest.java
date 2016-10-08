@@ -76,7 +76,7 @@ public class BoardTest {
     public static class Describe_deliverInitialCards extends Given_two_players {
 
         private int expectedNumberOfCards = 7;
-        private List cards;
+        private List cards = new ArrayList<>(54);
 
         @Before
         public void deliver_initial_cards(){
